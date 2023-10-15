@@ -1,0 +1,22 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is Namaste React By Akshay Dubey",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshaydubey50/namaste-react.git"
+  },
+  "author": "Akshay Dubey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akshaydubey50/namaste-react/issues"
+  },
+  "homepage": "https://github.com/akshaydubey50/namaste-react#readme",
+  "dependencies": {
+    "parcel": "^2.10.0"
+  }
+}
