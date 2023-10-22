@@ -76,3 +76,31 @@ Babel is a JavaScript transpiler, meaning it converts a newer version of ECMAScr
 
 
 Compiling is the transformation from Source Code (human readable) into machine code (computer executable). A compiler is a program.
+
+
+## Episode -3
+
+Q. What is JSX?
+JSX is HTML like syntax
+JSX get transpiled before it reaches to JS Engine
+JSX => React.CreateElement => Js Object => HTML
+
+Q. Superpower of JSX?
+We can write HTML like syntax as well js with using {}
+Easily readable for developer easy to debug.
+
+Q.  Role of **type** attribute  in script tag ? what options can I use there?
+=> The type attribute define the type of script. Type attribute identifies the content between script tag.By default it have "text/javascript"
+
+Below are the few types attribute:
+
+moduel: This value tell the browser  that the script have module type it can import,export file or module itself. 
+type/Ecmascript:This value tell the browser that script is following  the EcmaScript standard. 
+babel:This value indicate that the script support the babel type & required babel to transpile it.
+text/typescript:This value inidcate that the script is written in typescript.
+
+
+{TitleComponent} vs <TitleComponent />  vs <TitleComponent> </TitleComponent>
+=> {TitleComponent} It is a javascript experssion or variable . The **{}** embed only js variable & experssion
+<TitleComponent/> It is a React Component. React it self with the help of **<** angular tag
+<TitleComponent></TitleComponent> It is a equivalent to <TitlComponent/>
