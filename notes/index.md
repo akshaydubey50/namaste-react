@@ -1,3 +1,5 @@
+# Virtual DOM is a kind of object  representation 
+
 ## Episode 1 Notes:-
 
 Emmet is a free add-on for text editors that allows developers to type shortcuts that are then expanded into full pieces of code. Emmet is also known as Zen Coding.
