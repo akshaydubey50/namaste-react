@@ -1,5 +1,6 @@
 import React from "react";
 import { CDN_URL } from "../../utils/constant";
+import StarIcon from "./StarIcon";
 
 export default function RestaurantCard(props) {
   const { resData } = props;

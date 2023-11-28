@@ -1,21 +1,85 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RestaurantCard from "./restaurant/RestaurantCard";
-import { resObJ } from "../utils/mockData";
+import ShimmerEffect from "./restaurant/ShimmerEffect";
+import { Link } from "react-router-dom";
 
 export default function BodyLayout() {
-  const [listRestaurant, setLisRestaurant] = useState([...resObJ]);
+  const [listRestaurant, setLisRestaurant] = useState([]);
+    const [filterRestaurant, setFilterRestaurant] = useState([]);
+    const [searchText, setSearchText] = useState('');
+
+  useEffect(() => {
+    getRestaurantList();
+  }, []);
+
+  const getRestaurantList = async () => {
+    const fetchData = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.978302&lng=77.6408174&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const jsonData = await fetchData.json();
+
+    console.log(
+      "jsonData ####",
+      jsonData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
+    );
+    setLisRestaurant(jsonData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants);
+    setFilterRestaurant(
+      jsonData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
+    );
+  };
+
   const filterTopRestaurant = () => {
-    const filterlist = listRestaurant.filter((item) => item.info.avgRating >= 4.1);
+    
+    const filterlist = listRestaurant.filter(
+      (item) => item.info.avgRating >= 4
+    );
+    console.log(filterlist);
     setLisRestaurant(filterlist);
   };
-  return (
+
+  const filterSearchRestaurant =()=>{
+    debugger
+      const filterData = listRestaurant.filter((item)=>{
+        return item.info.name.toLowerCase().includes(searchText.toLowerCase());
+      })
+      console.log(filterData);
+      setFilterRestaurant(filterData);
+    
+  }
+
+  
+  return listRestaurant.length === 0 ? (
+    <ShimmerEffect />
+  ) : (
     <div className="">
-      <div className="filter-btn" style={{ margin: "10px" }}>
-        {/* <input type="text" /> */}
-        <button onClick={filterTopRestaurant}>Top Rated Restaurant</button>
+      <div className="flex justify-center">
+        <div className="m-4 p-4 flex w-84 gap-6 ">
+          <input
+            type="text"
+            className="rounded-md  border-black border-2 p-1"
+            value={searchText}
+            id="restaurant-search"
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            onClick={filterSearchRestaurant}
+            className="bg-green-100 px-4 py-2 rounded text-black font-medium "
+          >
+            Search
+          </button>
+          <button
+            onClick={filterTopRestaurant}
+            className="bg-gray-200 px-4 py-2 rounded text-black font-medium"
+          >
+            Top Rated Restaurant
+          </button>
+        </div>
       </div>
       <section className="card-wrapper">
-        {listRestaurant.map((item, index) => {
+        {filterRestaurant.map((item, index) => {
           return <RestaurantCard key={index} resData={item} />;
         })}
       </section>

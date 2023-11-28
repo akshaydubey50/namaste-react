@@ -128,3 +128,130 @@ Error Handling => React Fiber provide better error handling and more detailed er
 Server Side Rendering 
 Prioritization => One of the main benefit of react fiber is to prioritize different updates.react allow to resume & pause the rendering process higher-priority updated processed more quickly. 
 Incremental Rendering => Instead of rendering the entire component tree in one go, it can break the work into smaller units, or "fibers," and work on them incrementally.
+
+## Episode No 5.
+
+1. Why do we useState hook?
+=> UseState hook is use only for React funtional component to manage & update the state.It is use for state management.
+
+2. What is the use of config.js file?
+=> It help to declare the global constant and add mockdata, add route, add api credential
+
+3. What are the React Hook?
+=> React hooks are the utiltiy fucntion to perform certain action for our code
+
+## Episode No 6
+
+1. super(props) in class Component :- It is essential to use this line, it help to initialize the parent component before we use it.
+
+2. React Lifecycle Process:-
+a. Mounting
+b. Updating
+c. Unmounting
+
+Mounting,Updating,Unmounting has 2 phase render & commit
+
+For Mounting lifecycle method render have 2 sub-phase
+constructor is render & then render() is render & in last componentDidMount() is render
+
+
+UseEffect is use to fetching for functional Component & componentDidMount() is use fetching data in class component likewise useEffect return is use for cleanUp & componentWillUnmount() in use for cleanUp in class component.
+
+
+3. UseEffect async=> UseEffect except cleanup function which can be undefined or normal function. When you use async directly in the useEffect callback, it returns a promise, which is not what useEffect expects.
+
+## Episode No 9
+
+1. When bundle size is increase we use lazy loading concept to reduce the bundle size
+Here are few alternative name for that:-
+
+Chunking
+Code Splitting
+Dynamic Loading
+Lazy Loading
+On demand loading
+dynamic import
+
+2. What is Suspense?
+=> When we want use lazy loading feature that suspense is use to give us placeholder/fallback option till when React component loaded
+
+3. <Supense fallback(()=><h1>Loading</h1>)>
+<Grocery />
+</Supense>
+
+
+4. Advantages & Disadvantages for Code Splitting
+=> Pros:-
+Reduced Initial Load Time
+Smaller Initial Bundle Size
+Lazy Loading
+Faster Interactivity
+Modular Development
+
+=> Cons:-
+Increased Complexity
+Tooling Requirements
+Runtime Overhead
+Debugging Complexity
+Increased Network Requests
+
+
+## Episode No 10
+
+1. Why do we use .postcsssrc file?
+=> Postcss is use to write css in javascript, parcel get's to know via postcss that we suppose to use tailwindcss in our React Component
+
+## Episode No 11
+
+1. In tailwind css config file what are the use of content, plugin, extends, theme?
+=> content: The content key is used to specify the content for the content property in the CSS. This is mainly used when you want to define pseudo-elements or pseudo-classes.
+
+```
+ content: {
+    'before': 'content before',
+    'after': ['content(2)', 'content(3)'],
+  },
+  ```
+
+extend: Extend key is used to add or override  styles in the default tailwind css config, it is used to add our custom utility classes
+
+```
+  extend: {
+    fontFamily: {
+      custom: ['CustomFont', 'sans'],
+    },
+    fontSize: {
+      '7xl': '5rem',
+    },
+  },
+  ```
+
+plugin: It is use to register custom plugin or extend or modify tailwind css. It can add new features, custom utilities
+
+```
+  plugins: [
+    plugin(({ addUtilities }) => {
+      const newUtilities = {
+        '.skew-45': {
+          transform: 'skewY(-45deg)',
+        },
+      };
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    }),
+  ],
+```
+
+theme: Theme is used to override the default values like custom padding, spacing, fontvalues
+```
+ theme: {
+    extend: {
+      colors: {
+        customColor: '#ff4500',
+      },
+      spacing: {
+        '72': '18rem',
+      },
+    },
+  },
+  ```

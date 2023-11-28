@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { LOGO_IMAGE } from "../utils/constant";
-export  function Header() {
+import { Link } from "react-router-dom";
+export function Header() {
+  const [btnName, setBtnName] = useState('Login');
   return (
     <div className="header-wrapper">
       <div className="logo-container">
@@ -21,4 +23,4 @@ export  function Header() {
   );
 }
 
-export default Header
+export default Header;
