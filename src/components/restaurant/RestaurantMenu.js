@@ -8,25 +8,25 @@ import { useParams } from "react-router-dom";
 import { useRestaurantMenu } from "../../utils/useRestaurantMenu";
 export default function RestaurantMenu() {
     const { resId } = useParams();
-    const {resMenuInfo, resInfo }=    useRestaurantMenu(resId)
+    const {resMenuInfo }=    useRestaurantMenu(resId)
 
     return resMenuInfo == null ? (
       <ShimmerEffect />
     ) : (
       <>
-        <div class="menu-list-container">
+        <div class="py-5">
           <div className="menu-detail">
-            <h1>{resInfo.name}</h1>
+            {/* <h1>{resInfo.name}</h1> */}
             <p>
-              {resInfo.cuisines.join(", ")} - {resInfo.costForTwoMessage}
+              {/* {resInfo.cuisines.join(", ")} - {resInfo.costForTwoMessage} */}
             </p>
           </div>
-          <section class="restaurant-menu-wrapper">
+          <section class="grid grid-cols-1 gap-4 w-fit mx-auto ">
             {resMenuInfo.map((item) => {
               return (
-                <div className="res-menu-list" key={item.card.info.id}>
+                <div className="bg-slate-100 flex gap-6 cursor-pointer shadow-xl rounded-lg p-4 justify-between items-center" key={item.card.info.id}>
                   <div className="">
-                    {item.card.info.itemAttribute.vegClassifier == "VEG" ? (
+                    {item?.card?.info?.itemAttribute?.vegClassifier == "VEG" ? (
                       <VegIcon />
                     ) : (
                       <NonVegIcon />
@@ -41,7 +41,11 @@ export default function RestaurantMenu() {
                       {item.card.info.description?.slice(0, 80).concat("...")}
                     </p>
                   </div>
-                  <img src={CDN_URL + item.card.info.imageId} alt="test img" />
+                  <img
+                    src={CDN_URL + item.card.info.imageId}
+                    alt="test img"
+                    className="w-[150px] rounded-2xl"
+                  />
                 </div>
               );
             })}

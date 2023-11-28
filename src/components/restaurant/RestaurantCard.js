@@ -5,12 +5,12 @@ import StarIcon from "./StarIcon";
 export default function RestaurantCard(props) {
   const { resData } = props;
   return (
-    <div className="restaurant-card-container">
+    <div className="flex flex-col w-[300px] cursor-pointer rounded-[20px] hover:scale-90 hover:ease-in hover:duration-300">
       <div className="restaurant-image">
         {/* Restaurant Img */}
         <img src={CDN_URL + resData.info.cloudinaryImageId} alt="food-image" />
       </div>
-      <div className="restaurant-detail">
+      <div className=" p-2 ">
         <h3>{resData.info.name}</h3>
         <h4>
           <span>{resData.info.cuisines.join(", ")}</span>
@@ -24,3 +24,16 @@ export default function RestaurantCard(props) {
     </div>
   );
 }
+
+// HOC
+
+// export function WithPromoteLabelCards(RestaurantCard) {
+//   return () => {
+//     return (
+//       <>
+//         <label>Label</label>
+//         <RestaurantCard />
+//       </>
+//     );
+//   };
+// }

@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 export default function BodyLayout() {
   const [listRestaurant, setLisRestaurant] = useState([]);
-    const [filterRestaurant, setFilterRestaurant] = useState([]);
-    const [searchText, setSearchText] = useState('');
+  const [filterRestaurant, setFilterRestaurant] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     getRestaurantList();
@@ -23,14 +23,15 @@ export default function BodyLayout() {
       "jsonData ####",
       jsonData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
     );
-    setLisRestaurant(jsonData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants);
+    setLisRestaurant(
+      jsonData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
+    );
     setFilterRestaurant(
       jsonData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
     );
   };
 
   const filterTopRestaurant = () => {
-    
     const filterlist = listRestaurant.filter(
       (item) => item.info.avgRating >= 4
     );
@@ -38,17 +39,14 @@ export default function BodyLayout() {
     setLisRestaurant(filterlist);
   };
 
-  const filterSearchRestaurant =()=>{
-    debugger
-      const filterData = listRestaurant.filter((item)=>{
-        return item.info.name.toLowerCase().includes(searchText.toLowerCase());
-      })
-      console.log(filterData);
-      setFilterRestaurant(filterData);
-    
-  }
+  const filterSearchRestaurant = () => {
+    const filterData = listRestaurant.filter((item) => {
+      return item.info.name.toLowerCase().includes(searchText.toLowerCase());
+    });
+    console.log(filterData);
+    setFilterRestaurant(filterData);
+  };
 
-  
   return listRestaurant.length === 0 ? (
     <ShimmerEffect />
   ) : (
@@ -78,9 +76,13 @@ export default function BodyLayout() {
           </button>
         </div>
       </div>
-      <section className="card-wrapper">
-        {filterRestaurant.map((item, index) => {
-          return <RestaurantCard key={index} resData={item} />;
+      <section className="w-fit grid grid-cols-4 gap-8 place-content-center mx-auto">
+        {filterRestaurant.map((item) => {
+          return (
+            <Link key={item?.info?.id} to={"/restaurant/" + item?.info?.id}>
+              <RestaurantCard resData={item} />
+            </Link>
+          );
         })}
       </section>
     </div>
