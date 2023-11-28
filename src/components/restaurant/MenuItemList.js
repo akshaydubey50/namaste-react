@@ -11,7 +11,7 @@ export default function MenuItemList({ menuListData }) {
     <div className="flex gap-6 flex-col px-4 my-2 rounded-lg bg-gray-100 ">
       {menuListData.map((item, index) => (
         <div
-          key={index}
+          key={item.card?.info.id}
           className="flex gap-6 items-center justify-between border-b py-4  border-gray-200"
         >
           <div className="">
