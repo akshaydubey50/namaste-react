@@ -2,10 +2,18 @@ import React from "react";
 import VegIcon from "./VegIcon";
 import NonVegIcon from "./NonVegIcon";
 import { CDN_URL } from "../../utils/constant";
+import { useDispatch } from "react-redux";
+import { addItems } from "../../utils/cartSlice";
 
 export default function MenuItemList({ menuListData }) {
   // Destructure menuListData from props
   console.log("menuListData:-", menuListData);
+
+  const dispatch=useDispatch();
+
+  const handlerAddItem =(item)=>{
+    dispatch(addItems(item))
+  }
 
   return (
     <div className="flex gap-6 flex-col px-4 my-2 rounded-lg bg-gray-100 ">
@@ -29,11 +37,16 @@ export default function MenuItemList({ menuListData }) {
               {item.card.info.description?.slice(0, 80).concat("...")}
             </p>
           </div>
-          <img
-            src={CDN_URL + item.card.info.imageId}
-            alt="test img"
-            className="w-[150px] h-[150px] rounded-2xl"
-          />
+         <div className="relative">
+            <button className="bg-black py-2 px-3 cursor-pointer rounded-md text-white font-semibold absolute left-16" 
+            onClick={()=>handlerAddItem(item)}
+            >Add +</button>
+            <img
+              src={CDN_URL + item.card.info.imageId}
+              alt="test img"
+              className="w-[200px] h-[150px] rounded-2xl object-cover"
+            />
+         </div>
         </div>
       ))}
     </div>

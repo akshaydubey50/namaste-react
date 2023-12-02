@@ -255,3 +255,69 @@ theme: Theme is used to override the default values like custom padding, spacing
     },
   },
   ```
+
+
+2. React have 2 things
+Data Layer , UI Layer => Try to make you Data layer strong so that UI layer get automatically strong
+
+
+3. Prop Drilling is a concept were parent component passes props data to child data , it continue till last child data were props data required
+
+4. lifting state up is concept where state handle of child component via parent component best example for that is accordion the clicked item open and show the list were all other itemlist will be close, it is also know a controlled component
+if accordion state manage by itemlist itself then it is know as uncontrolled component, because all itemlist will manage there own state.
+
+5. Context provider is a method were dynamic data will be pass to all underlying component of that specific context 
+Context Consumer bascially use in class component approach to access the value shared by provider , for functional component we use usecontext(contextName) to access the data.
+
+6. If we don't provide the new value to context provider then it will take default value.
+
+## Episode No 12
+
+Redux =>
+Redux Toolkit is newest package  to write standard  way Redux logic
+
+### Redux store is a big object kept in central global store.
+### Redux store keep all data in one object
+
+### When you click add btn it dispatch the action `which call the reducer fucntion which update the slice of our Redux Store
+
+### Whenever redux store slice update the data in reflect the updated data to react component these process know as subscribing to store 
+
+
+## Vanilla Redux don't allow to mutate the state & it was required to return the newState
+## Redux Toolkit use same architect in the backend  , it uses immer package of js to find the difference between newState & prevState
+
+
+
+
+useContext vs Redux
+=> useContext is react hook where you can store and access data at global level
+=> In context we provide data at global level then we consume data for specific component
+=> To access data use we use useContext hook useContext(contextName) & for creation for context we use createContext()
+=> In is useful for small to medium react project to handle data / state management
+
+Redux
+=> Redux Toolkit is a new library that we use for state management, in which redux store concept play huge role
+=> Redux store contain different of slice like cartSlice, themeSlice, userInfo slice
+=> Ex: When you click add btn it dispatch the action which call the reducer fucntion which update the slice of our Redux Store. Whenever redux store slice update the data in reflect the updated data to react component these process know as subscribing to store 
+=> It is useful for very large react application
+
+## Advantage of using Redux Toolkit over vanilla Redux
+=> Vanilla Redux was we confusing & complicate for react developer to understand, in that we not suppose to mutate the state we have to clone state into newState and return that state
+=> Whereas Redux Toolkit is architect is very easy to understand and state can be mutated to code
+
+
+## Explain Reducer
+=> Reducer in appStore carry all the reducer of individual slice in appStore config
+
+## Explain Dispatcher
+=> Ex:- When you click add btn it dispatch the action which call the reducer fucntion which update the slice of our Redux Store.
+When user trigger any js event that time dispatch() trigger the certain action which is created in slice reducer , now it will call that reducer function to update the state.
+
+## Explain slice
+=> Slice in a redux store concept in which reducer function store action like addItems, removeItems, clearItems
+
+## Explain selector
+=> Selector in redux come's into picture when slice state get's updated now updated state data need to reflect to UI Component, this process known as **subscribing to the store**
+
+

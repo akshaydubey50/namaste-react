@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { LOGO_IMAGE } from "../utils/constant";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
+import cartStore from "../utils/cartSlice";
 export function Header() {
-  const [btnName, setBtnName] = useState('Login');
+  // const [btnName, setBtnName] = useState('Login');
+
+  const {loggedUser} = useContext(UserContext);
+  const cartItems = useSelector((store)   => store.cart.items)
+  console.log('Store CartItems:-',cartItems)
+  
   return (
-    <div className="bg-orange-100 flex justify-between items-center shadow-lg p-4">
+    <div className="bg-green-100 flex justify-between items-center shadow-lg p-4">
       <div className="logo-container">
         <img src={LOGO_IMAGE} alt="food" className="" />
       </div>
       <div className="nav-items">
-        <ul>
+        <ul className="font-medium text-lg">
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -17,11 +25,12 @@ export function Header() {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/">Section</Link>
+            <Link to="/cart">Cart ({cartItems.length} items)</Link>
           </li>
           <li>
             <Link to="/">Contact</Link>
           </li>
+          <li>{loggedUser}</li>
         </ul>
       </div>
     </div>

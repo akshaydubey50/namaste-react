@@ -19,10 +19,6 @@ export default function BodyLayout() {
 
     const jsonData = await fetchData.json();
 
-    console.log(
-      "jsonData ####",
-      jsonData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
-    );
     setLisRestaurant(
       jsonData.data.cards[5].card.card.gridElements.infoWithStyle.restaurants
     );

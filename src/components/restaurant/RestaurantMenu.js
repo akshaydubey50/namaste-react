@@ -10,8 +10,8 @@ import RestaurantCategory from "./RestaurantCategory";
 export default function RestaurantMenu() {
   const { resId } = useParams();
   const { resMenuInfo, resInfo } = useRestaurantMenu(resId);
-    const [showIndex, setShowIndex] = useState(-1);
- 
+  const [showIndex, setShowIndex] = useState(-1);
+
   return resMenuInfo == null ? (
     <ShimmerEffect />
   ) : (
@@ -21,11 +21,11 @@ export default function RestaurantMenu() {
           <h1 className="text-2xl font-semibold my-5">{resInfo.name} </h1>
           <p className="my-5 font-semibold text-lg">
             {resInfo.cuisines.join(", ")} - {resInfo.costForTwoMessage}
-          </p>
+          </p> 
         </div>
-        {resMenuInfo.map((item,index)=>{
-          return <RestaurantCategory key={item.card.card.title} data={...item}  showItem={index=== showIndex?true:false}
-            setShowIndex={()=>setShowIndex(index)}
+        {resMenuInfo.map((item, index) => {
+          return <RestaurantCategory key={item.card.card.title} data={...item} showItem={index === showIndex ? true : false}
+            setShowIndex={() => setShowIndex(index)}
           />;
         })}
       </div>
