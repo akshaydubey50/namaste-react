@@ -53,6 +53,7 @@ export default function BodyLayout() {
             type="text"
             className="rounded-md  border-black border-2 p-1"
             value={searchText}
+              data-testid="searchInput"
             id="restaurant-search"
             onChange={(e) => {
               setSearchText(e.target.value);

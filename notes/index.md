@@ -321,3 +321,16 @@ When user trigger any js event that time dispatch() trigger the certain action w
 => Selector in redux come's into picture when slice state get's updated now updated state data need to reflect to UI Component, this process known as **subscribing to the store**
 
 
+## Explain createSlice and configuration it takes
+=> create a new file for that slice now add items data will store data, add reducers to add action in that
+=> Now export all action as SliceName.actions also export reducers as a SliceName.reducer
+=> Now where we need to trigger any event import useDispatch () for react-redux with that import the action we required 
+=> Now import useSelector() were we need to show UI Data
+
+## Episode 13
+
+Create react app install testing library by default
+Jest testing library is use by react testing library
+
+
+## Whenever using fetch,state in react test use act() 

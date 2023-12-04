@@ -20,6 +20,7 @@ export default function MenuItemList({ menuListData }) {
       {menuListData.map((item, index) => (
         <div
           key={item.card?.info.id}
+          data-testid="foodItems"
           className="flex gap-6 items-center justify-between border-b py-4  border-gray-200"
         >
           <div className="">

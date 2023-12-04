@@ -23,7 +23,7 @@ export default function RestaurantCategory({ data, showItem, setShowIndex }) {
                     
                 </div>
             </div>
-            {showItem && <MenuItemList menuListData={...itemCards} />}
+            {showItem && <MenuItemList menuListData={itemCards} />}
         </div>
     )
 }

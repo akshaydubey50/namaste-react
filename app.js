@@ -2,6 +2,7 @@
 import React,{lazy,Suspense, useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom";
+import { Provider } from "react-redux";
 
 // component & style import
 import "./index.css";
@@ -11,9 +12,11 @@ import BodyLayout from "./src/components/BodyLayout";
 import Error from "./src/components/error/Error";
 import RestaurantMenu from "./src/components/restaurant/RestaurantMenu";
 import UserContext from "./src/utils/UserContext";
-import { Provider } from "react-redux";
-import appStore from "./src/utils/appStore";
+import store from "./src/utils/appStore";
 import Cart from "./src/components/Cart";
+import { useGetStudentListQuery } from "./src/utils/studentApi";
+
+
 /**
  *
  * Header
@@ -32,6 +35,8 @@ import Cart from "./src/components/Cart";
 
 const Applayout = () => {
   const [UserInfo,setUserInfo]= useState("");
+  // const { data, isLoading, isError, error } = useGetStudentListQuery()
+  
   useEffect(()=>{
 
     const data = {
@@ -40,17 +45,18 @@ const Applayout = () => {
     setUserInfo(data.name)
 
   },[])
+
   return (
+    <Provider store={store}>
     <div className="layout-wrapper">
-    <Provider store={appStore}>
     <UserContext.Provider value={{loggedUser:UserInfo}}>
       <Header />
     </UserContext.Provider>
     <UserContext.Provider value={{loggedUser:"Elon Musk"}}>
       <Outlet />
     </UserContext.Provider>
-      </Provider>
     </div>
+      </Provider>
   );
 };
 

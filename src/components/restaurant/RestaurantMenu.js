@@ -24,7 +24,7 @@ export default function RestaurantMenu() {
           </p> 
         </div>
         {resMenuInfo.map((item, index) => {
-          return <RestaurantCategory key={item.card.card.title} data={...item} showItem={index === showIndex ? true : false}
+          return <RestaurantCategory key={item.card.card.title} data={item} showItem={index === showIndex ? true : false}
             setShowIndex={() => setShowIndex(index)}
           />;
         })}

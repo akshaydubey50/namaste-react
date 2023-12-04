@@ -3,10 +3,11 @@ import { CDN_URL } from "../../utils/constant";
 import StarIcon from "./StarIcon";
 import UserContext from "../../utils/UserContext";
 
-export default function RestaurantCard({ resData }) {
+export default function xRestaurantCard({ resData }) {
   const { loggedUser } = useContext(UserContext);
   return (
-    <div className="flex flex-col w-[300px] cursor-pointer rounded-[20px] hover:scale-90 hover:ease-in hover:duration-300">
+    <div className="flex flex-col w-[300px] cursor-pointer rounded-[20px] hover:scale-90 hover:ease-in hover:duration-300"
+    data-testid="resCard">
       <div className="restaurant-image">
         {/* Restaurant Img */}
         <img src={CDN_URL + resData.info.cloudinaryImageId} alt="food-image" className="object-cover" />
